@@ -27,12 +27,12 @@ void Display()
 
 	// Draw Pentagon //
 	centerX = 75.0, centerY = 75.0;
-	DrawRegularPolygon_2D(centerX, centerY, radius, 6);
+	DrawRegularPolygon_2D(centerX, centerY, radius, 5);
 
 
 	// Draw Hexagon //
 	centerX = 25.0, centerY = 25.0;
-	DrawRegularPolygon_2D(centerX, centerY, radius, 8);
+	DrawRegularPolygon_2D(centerX, centerY, radius, 6);
 
 
 	// Draw Dodecagon //
