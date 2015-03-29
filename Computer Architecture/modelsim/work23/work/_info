@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/Document
+vSR_latch
+!s110 1427284256
+!i10b 1
+!s100 f=[oB[XnBk>7?]5eB;g_m0
+IQM8H:`d[<5G:L7A8iG[a63
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dD:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23
+w1427284031
+8D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/Latch.v
+FD:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/Latch.v
+L0 1
+Z2 OP;L;10.4;61
+r1
+!s85 0
+31
+!s108 1427284256.153000
+!s107 D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/Latch.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/Latch.v|
+!s101 -O0
+!i113 1
+Z3 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@s@r_latch
+vTestbench4Sr_latch
+!s110 1427284255
+!i10b 1
+!s100 FSk<Ol>5OJ4DG:Ybaa^mK2
+IbgDZf_VkNRg?JY[b5;oF>0
+R0
+R1
+w1427284066
+8D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/tb4latch.v
+FD:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/tb4latch.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1427284255.660000
+!s107 Latch.v|D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/tb4latch.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Document/KoreaUnivHomework_2015_1/Computer Architecture/modelsim/work23/tb4latch.v|
+!s101 -O0
+!i113 1
+R3
+n@testbench4@sr_latch
