@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Namse">
+      <UniqueIdentifier>{d7a4e0d1-df6f-4d9b-870e-5ce998fbb8a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namse\Node">
+      <UniqueIdentifier>{22b14b1c-a3ea-43c3-ba8a-9847179bfb0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namse\Vector">
+      <UniqueIdentifier>{2298e87a-9509-4b64-8dbf-44f9f49672ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namse\Line">
+      <UniqueIdentifier>{4acc82e7-a88e-48b9-8831-4df856c9bc45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Namse\Triangle">
+      <UniqueIdentifier>{c33ef321-75ac-437e-a253-b326148464e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NamsGraphics.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Node.h">
+      <Filter>Namse\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Namse\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Namse\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Namse\Vector</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NamsGraphics.cpp" />
+    <ClCompile Include="NormalAndViewVector.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Node.cpp">
+      <Filter>Namse\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Namse\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Namse\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Namse\Vector</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
