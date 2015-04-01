@@ -1,0 +1,16 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4DEC24.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4DEC24.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module DEC24
+-- Compiling module tb4DEC24
+
+Top level modules:
+	tb4DEC24
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/DEC24.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/DEC24.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module DEC24
+
+Top level modules:
+	DEC24
+
+} {} {}}

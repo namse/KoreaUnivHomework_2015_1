@@ -1,0 +1,17 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module fa
+-- Compiling module RCA
+-- Compiling module tb4RCA
+
+Top level modules:
+	tb4RCA
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/fulladder.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/fulladder.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module fa
+
+Top level modules:
+	fa
+
+} {} {}}
