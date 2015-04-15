@@ -115,8 +115,30 @@ Z14 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/Kore
 !i113 1
 R7
 n@d@e@c24
+vDFF
+Z15 !s110 1428985653
+!i10b 1
+!s100 M0R7<VH4O07QWQ7W=4CJ_1
+ISUJZZgElenR`OY?^5IG;<3
+R1
+R2
+w1428985650
+8DFF.v
+FDFF.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z16 !s108 1428985653.151000
+Z17 !s107 sr_latch.v|DFF.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v|
+Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v|
+!s101 -O0
+!i113 1
+R7
+n@d@f@f
 vfa
-Z15 !s110 1427905246
+Z19 !s110 1427905246
 !i10b 1
 !s100 P2]FZ@2e[EjV`4C0BG=h43
 IfK8VTMZ>mEAkc_oSLQCYO1
@@ -130,14 +152,14 @@ R3
 r1
 !s85 0
 31
-Z16 !s108 1427905246.521000
-Z17 !s107 fulladder.v|RCA.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v|
-Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v|
+Z20 !s108 1427905246.521000
+Z21 !s107 fulladder.v|RCA.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v|
+Z22 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4RCA.v|
 !s101 -O0
 !i113 1
 R7
 vmux2to1
-Z19 !s110 1427300188
+Z23 !s110 1427300188
 !i10b 1
 !s100 @TI0RMV[:>==D7LKZdKlY2
 ICYjo?:_l6F4NWKGPS>^TE1
@@ -151,14 +173,14 @@ R3
 r1
 !s85 0
 31
-Z20 !s108 1427300188.038000
-Z21 !s107 mux2to1.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4mux2to1.v|
-Z22 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4mux2to1.v|
+Z24 !s108 1427300188.038000
+Z25 !s107 mux2to1.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4mux2to1.v|
+Z26 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4mux2to1.v|
 !s101 -O0
 !i113 1
 R7
 vRCA
-R15
+R19
 !i10b 1
 !s100 G7R>?9a_oPX;76h:YBA663
 IbC?X0QVAfY@n4z^4PkJ;83
@@ -172,15 +194,15 @@ R3
 r1
 !s85 0
 31
-R16
-R17
-R18
+R20
+R21
+R22
 !s101 -O0
 !i113 1
 R7
 n@r@c@a
 vSR_latch
-Z23 !s110 1427285735
+R15
 !i10b 1
 !s100 f=[oB[XnBk>7?]5eB;g_m0
 IgQALb>QU2LfX5FIXf;A@H3
@@ -194,9 +216,9 @@ R3
 r1
 !s85 0
 31
-Z24 !s108 1427285735.389000
-Z25 !s107 sr_latch.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4sr_latch.v|
-Z26 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4sr_latch.v|
+R16
+R17
+R18
 !s101 -O0
 !i113 1
 R7
@@ -245,8 +267,29 @@ R14
 !i113 1
 R7
 ntb4@d@e@c24
+vtb4dff
+R15
+!i10b 1
+!s100 hXE3o>dXk9_T@aL0SH]]O2
+IcKk[;1[2fIh:V:m2:6^HX2
+R1
+R2
+w1222938988
+8C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v
+FC:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v
+L0 3
+R3
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+!i113 1
+R7
 vtb4mux2to1
-R19
+R23
 !i10b 1
 !s100 Ca;LSS5g07dm=@Xj5gLHX0
 IE<^33CzX8Lb1Q9F^2[WYV3
@@ -260,14 +303,14 @@ R3
 r1
 !s85 0
 31
-R20
-R21
-R22
+R24
+R25
+R26
 !s101 -O0
 !i113 1
 R7
 vtb4RCA
-R15
+R19
 !i10b 1
 !s100 ibhUgc_mO7_7?X2X9n;iJ0
 I<R:7`AAY9aC=M=bV?VH881
@@ -281,15 +324,15 @@ R3
 r1
 !s85 0
 31
-R16
-R17
-R18
+R20
+R21
+R22
 !s101 -O0
 !i113 1
 R7
 ntb4@r@c@a
 vTestbench4Sr_latch
-R23
+!s110 1427285735
 !i10b 1
 !s100 e?=LETHzEL1]1=V8@:5AZ2
 IEP`[Y8DJQaf6Vh4i?<JA^2
@@ -303,9 +346,9 @@ R3
 r1
 !s85 0
 31
-R24
-R25
-R26
+!s108 1427285735.389000
+!s107 sr_latch.v|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4sr_latch.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4sr_latch.v|
 !s101 -O0
 !i113 1
 R7

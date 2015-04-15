@@ -1,0 +1,17 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/sr_latch.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/sr_latch.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module SR_latch
+
+Top level modules:
+	SR_latch
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4dff.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module SR_latch
+-- Compiling module DFF
+-- Compiling module tb4dff
+
+Top level modules:
+	tb4dff
+
+} {} {}}

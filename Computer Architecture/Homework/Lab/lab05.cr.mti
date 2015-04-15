@@ -1,1 +1,54 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/CLA.v} {2 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/CLA.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module adder1bit
+-- Compiling module carrygu
+-- Compiling module adder4bit
+** Warning: ** while parsing file included at C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/CLA.v(2)
+** at carrygu.v(1): (vlog-2275) 'carrygu' already exists and will be overwritten.
 
+-- Compiling module carrygu
+-- Compiling module CLA
+
+Top level modules:
+	CLA
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/adder1bit.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/adder1bit.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module adder1bit
+
+Top level modules:
+	adder1bit
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/carrygu.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/carrygu.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module carrygu
+
+Top level modules:
+	carrygu
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4CLA.v} {2 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4CLA.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module adder1bit
+-- Compiling module carrygu
+-- Compiling module adder4bit
+** Warning: ** while parsing file included at C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4CLA.v(1)
+** while parsing file included at CLA.v(2)
+** at carrygu.v(1): (vlog-2275) 'carrygu' already exists and will be overwritten.
+
+-- Compiling module carrygu
+-- Compiling module CLA
+-- Compiling module tb4CLA
+
+Top level modules:
+	tb4CLA
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/adder4bit.v} {1 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/adder4bit.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module adder1bit
+-- Compiling module carrygu
+-- Compiling module adder4bit
+
+Top level modules:
+	adder4bit
+
+} {} {}}
