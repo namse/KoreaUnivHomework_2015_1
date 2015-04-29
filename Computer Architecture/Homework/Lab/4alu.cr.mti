@@ -1,0 +1,30 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4alu.v} {2 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4alu.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module alu1bit
+** Warning: ** while parsing file included at C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4alu.v(1)
+** while parsing file included at alu4bit.v(1)
+** at alu1bit.v(25): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+-- Compiling module alu4bit
+** Warning: ** while parsing file included at C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/tb4alu.v(1)
+** at alu4bit.v(19): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+-- Compiling module tb4alu
+
+Top level modules:
+	tb4alu
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/alu4bit.v} {2 {vlog -work work -stats=none {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/alu4bit.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module alu1bit
+** Warning: ** while parsing file included at C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/alu4bit.v(1)
+** at alu1bit.v(25): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+-- Compiling module alu4bit
+** Warning: C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab/alu4bit.v(19): (vlog-2283) Extra semicolon in $unit (global) scope.
+
+
+Top level modules:
+	alu4bit
+
+} {} {}}

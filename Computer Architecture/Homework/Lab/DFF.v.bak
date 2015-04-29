@@ -5,7 +5,7 @@ module DFF(clock, D, Q, Qbar);
 	input clock, D;
 	output Q, Qbar;
 
-	reg NULL;
+	wire NULL;
 	wire sr_up_qbar;
 	wire sr_down_qbar;
 	wire sr_down_q;

@@ -17,6 +17,4 @@ module DFF(clock, D, Q, Qbar);
 	SR_latch srlatch_up(NULL, sr_up_qbar, sr_down_qbar, clock);
 	SR_latch srlatch_down(sr_down_q, sr_down_qbar, sr_down_sbar, D);
 	SR_latch srlatch_right(Q, Qbar, sr_up_qbar, sr_down_q);
-	//assign Q = clock;
-	//assign Qbar = clock;
 endmodule

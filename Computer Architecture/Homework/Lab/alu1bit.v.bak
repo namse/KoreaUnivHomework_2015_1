@@ -1,0 +1,28 @@
+module alu1bit(A, B, CarryIn, Binvert, Operation, Less, Result, CarryOut);
+	input A, B, CarryIn, Binvert;
+	input [1:0]Operation;
+	input Less;
+	output Result, CarryOut;
+	
+	reg tempResult, tempCarryOut;
+	reg tempB;
+	always @(A, B, Operation, CarryIn, Binvert, Less)
+	begin
+		tempCarryOut = 0;
+		case (Binvert)
+		1:	tempB = !B;
+		0:	tempB = B;
+		case (Operation)
+		2'b00:	tempResult = A & tempB;
+		2'b01:	tempResult = A | tempB;
+		2'b10:	{tempCarryOut, tempResult} = A + tempB + CarryIn;
+		2'b11:	
+			begin
+				tempCarryOut = ( ( A ~^ tempB ) & CarryIn | ( A ^ tempB ) & A );
+				tempResult = Less;
+			end
+		endcase
+	end
+	assign Result = tempResult;
+	assign CarryOut = tempCarryOut;
+endmodule;
