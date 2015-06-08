@@ -1,0 +1,1 @@
+실제 로그결과는 약 20mb가 넘는데, 현재 VMWare에서 공유폴더에 문제가 생겨서, 필요한 firefox, sublime, sudoku 부분만 구하였음.
