@@ -1,0 +1,64 @@
+{C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/control_units.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\control_units.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mcu
+-- Compiling module acu
+
+Top level modules:
+	mcu
+	acu
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/regfile_beh.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\regfile_beh.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module registerfile
+-- Compiling module RegFileTestbench
+
+Top level modules:
+	RegFileTestbench
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/alu_beh.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\alu_beh.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module ALU
+-- Compiling module ALUTestbench
+
+Top level modules:
+	ALUTestbench
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/mem_beh.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\mem_beh.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mem
+-- Compiling module MemTestbench
+
+Top level modules:
+	MemTestbench
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/components.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\components.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module single_register
+-- Compiling module single_register_Testbench
+-- Compiling module mux4to1
+-- Compiling module mux4to1_Testbench
+-- Compiling module signextd
+-- Compiling module signextd_Testbench
+-- Compiling module shiftleft2
+-- Compiling module shiftleft2_Testbench
+-- Compiling module concatenate4to28
+-- Compiling module concatenate4to28_Testbench
+
+Top level modules:
+	single_register_Testbench
+	mux4to1_Testbench
+	signextd_Testbench
+	shiftleft2_Testbench
+	concatenate4to28_Testbench
+
+} {} {}} {C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab09/mux2to1_beh.v} {1 {vlog -work work -stats=none {C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab09\mux2to1_beh.v}
+Model Technology ModelSim PE Student Edition vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mux2to1for5bit
+-- Compiling module mux2to1
+-- Compiling module muxTestbench
+
+Top level modules:
+	mux2to1for5bit
+	muxTestbench
+
+} {} {}}
