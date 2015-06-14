@@ -4,7 +4,7 @@
 Namse::RayTracingEngine* g_RayTracingEngine = nullptr;
 
 Namse::RayTracingEngine::RayTracingEngine()
-	:m_Octree(), m_ColorBuffer(nullptr)
+	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false)
 {
 	m_RootNode.m_Position = Namse::Vector(0, 0, 0);
 	m_MaxVector.m_X = m_MaxVector.m_Y = m_MaxVector.m_Z = std::numeric_limits<double>::min();
@@ -26,6 +26,7 @@ void Namse::RayTracingEngine::Reshape(int w, int h)
 	if (m_ColorBuffer && sizeof(Namse::Color) * w * h > m_BufferSize)
 	{
 		delete m_ColorBuffer;
+		m_ColorBuffer = nullptr;
 	}
 	if (m_ColorBuffer == nullptr)
 	{
@@ -38,10 +39,21 @@ void Namse::RayTracingEngine::Reshape(int w, int h)
 
 	m_Camera.OnReshpae(w, h);
 
+	m_IsReshapeReserved = false;
+}
+void Namse::RayTracingEngine::ReserveReshape(int w, int h)
+{
+	m_IsReshapeReserved = true;
+	m_ReservedWidth = w;
+	m_ReservedHeight = h;
 }
 
 void Namse::RayTracingEngine::OnDisplay()
 {
+	if (m_IsReshapeReserved)
+	{
+		Reshape(m_ReservedWidth, m_ReservedHeight);
+	}
 	if (m_ColorBuffer != nullptr)
 	{
 		// 1. reset octree

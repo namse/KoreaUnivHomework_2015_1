@@ -15,7 +15,6 @@ namespace Namse
 
 		void	PushTriangleToOctree(Triangle* triangle);
 
-		void	Reshape(int w, int h);
 		void	OnDisplay();
 		void	AddChild(Node* node);
 		void	RemoveChild(Node* node);
@@ -37,8 +36,11 @@ namespace Namse
 
 		void	ThreadSetup();
 
+		void	ReserveReshape(int w, int h);
 		
 	private:
+		void	Reshape(int w, int h);
+
 		unsigned int GetBufferSize()
 		{
 			return m_WindowHeight * m_WindowHeight * 3;
@@ -55,6 +57,10 @@ namespace Namse
 		std::vector<Light*> m_LightList;
 
 		std::thread m_Threads[ThreadWidth * ThreadHeight];
+
+		bool m_IsReshapeReserved;
+		int m_ReservedWidth;
+		int m_ReservedHeight;
 	};
 }
 

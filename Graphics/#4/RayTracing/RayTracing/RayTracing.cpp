@@ -122,7 +122,7 @@ void CalculateNormal()
 
 void Reshape(int w, int h)
 {
-	g_RayTracingEngine->Reshape(w, h);
+	g_RayTracingEngine->ReserveReshape(w, h);
 	
 }
 
