@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Model.cpp">
+      <Filter>Nams</Filter>
+    </ClCompile>
+    <ClCompile Include="NamsGraphics.cpp">
+      <Filter>Nams</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="RayTracing.cpp" />
+    <ClCompile Include="Camera.cpp">
+      <Filter>Nams\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Nams\Definition\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="IntersectTest.cpp">
+      <Filter>Nams\IntersectTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Nams\Definition\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Nams\Definition\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Nams\Definition\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Nams\Definition\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="RayTracingEngine.cpp">
+      <Filter>Nams\RayTracingEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>Nams\Definition\Octree</Filter>
+    </ClCompile>
+    <ClCompile Include="GLMath.cpp">
+      <Filter>Nams\Definition\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Nams\Definition\Light</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Model.h">
+      <Filter>Nams</Filter>
+    </ClInclude>
+    <ClInclude Include="NamsGraphics.h">
+      <Filter>Nams</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Nams</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Camera.h">
+      <Filter>Nams\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Nams\Definition\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracing.h" />
+    <ClInclude Include="IntersectTest.h">
+      <Filter>Nams\IntersectTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Nams\Definition\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Nams\Definition\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Nams\Definition\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Nams\Definition\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="RayTracingEngine.h">
+      <Filter>Nams\RayTracingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>Nams\Definition\Octree</Filter>
+    </ClInclude>
+    <ClInclude Include="GLMath.h">
+      <Filter>Nams\Definition\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Nams\Definition\Light</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Nams">
+      <UniqueIdentifier>{b0d7813c-a2b6-46d1-a1ad-f952fd207872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Camera">
+      <UniqueIdentifier>{a7f3c60b-eb42-4eec-9bf6-adaede8d85fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\IntersectTest">
+      <UniqueIdentifier>{c0d3878b-7cdd-4acd-baf4-56034efa03d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\RayTracingEngine">
+      <UniqueIdentifier>{41720da3-60a5-4f47-b21f-2767791f99e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition">
+      <UniqueIdentifier>{3a7b8e1d-b5db-475d-b3d5-6598a180ff5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Vector">
+      <UniqueIdentifier>{c727aad8-1e7b-4ba5-8fe4-627e65cf357f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Triangle">
+      <UniqueIdentifier>{1df35b84-6a4d-47fe-9dbb-cdd241f9f0ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Color">
+      <UniqueIdentifier>{90fc023b-1cf9-4e8f-9a2a-afdbfcb344b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Line">
+      <UniqueIdentifier>{1beee2b6-f1d7-48d9-b79c-1dfced28a2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Node">
+      <UniqueIdentifier>{440d7442-191b-45dd-8f68-4c4a69811d58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Octree">
+      <UniqueIdentifier>{e7a4d2a6-7fb0-4657-b91f-1d4d1520b321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Matrix">
+      <UniqueIdentifier>{b9f0d470-4766-47b1-b328-071b190858e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Definition\Light">
+      <UniqueIdentifier>{6fbfb792-61b9-4b36-a52d-fdea90ad7781}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
