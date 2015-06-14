@@ -32,7 +32,6 @@ Namse::Robot::Robot()
 		{
 			Namse::Vector vec;
 			sstr >> vec.m_X >> vec.m_Y >> vec.m_Z;
-			vec /= 20;
 			Namse::Vector* newVec = new Namse::Vector(vec);
 			m_Vertex.push_back(newVec);
 		}
@@ -42,7 +41,7 @@ Namse::Robot::Robot()
 			sstr >> a >> b >> c;
 
 			Namse::Triangle* tri = new Namse::Triangle(m_Vertex.at(a-1),
-				m_Vertex.at(b-1),
+				m_Vertex.at(b-1),	
 				m_Vertex.at(c-1));
 
 			AddChild(tri);

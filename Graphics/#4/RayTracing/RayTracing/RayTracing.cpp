@@ -81,9 +81,9 @@ int main(int argc, char* argv[])
 
 	
 	Namse::DirectionalLight directionalLight;
-	directionalLight.m_Color = Namse::Color(0, 0, 1);
+	directionalLight.m_Color = Namse::Color(1, 1, 1);
 	directionalLight.m_LightPower = 1;
-	directionalLight.m_Ray = Namse::Vector(0, -1, 0).Unit();
+	directionalLight.m_Ray = Namse::Vector(1, 0, 1).Unit();
 	g_RayTracingEngine->AddLight(&directionalLight);
 
 	

@@ -4,11 +4,17 @@
 Namse::RayTracingEngine* g_RayTracingEngine = nullptr;
 
 Namse::RayTracingEngine::RayTracingEngine()
-	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false), m_ReservedHopCount(MAX_RAY_HOP), m_ReserveSampling(Sampling)
+	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false), m_ReservedHopCount(MAX_RAY_HOP), m_ReserveSampling(Sampling), m_RotateLight()
 {
 	m_RootNode.m_Position = Namse::Vector(0, 0, 0);
 	m_MaxVector.m_X = m_MaxVector.m_Y = m_MaxVector.m_Z = std::numeric_limits<double>::min();
 	m_MinVector.m_X = m_MinVector.m_Y = m_MinVector.m_Z = std::numeric_limits<double>::max();
+
+	m_RotateLight.m_Position = Namse::Vector(5, 0, 0);
+	m_RotateLight.m_LightPower = 1;
+	m_RotateLight.m_Color = Namse::Color(1, 1, 1);
+
+	AddLight(&m_RotateLight);
 }
 
 
@@ -62,6 +68,11 @@ void Namse::RayTracingEngine::OnDisplay()
 	}
 	MAX_RAY_HOP = m_ReservedHopCount;
 	Sampling = m_ReserveSampling;
+
+	static float Angle = 0;
+	Angle += 0.1;
+	m_RotateLight.m_Position = Namse::Vector(5.f * cos(Angle), 0, 5.f * sin(Angle));
+
 	if (m_ColorBuffer != nullptr)
 	{
 		// 1. reset octree

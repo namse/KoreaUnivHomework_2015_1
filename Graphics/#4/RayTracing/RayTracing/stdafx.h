@@ -23,7 +23,7 @@ extern GLdouble g_ScreenLength;
 #define OUT
 
 
-const GLdouble MAX_DISTNACE = 100;
+const GLdouble MAX_DISTNACE = 10000;
 const GLdouble MIN_DISTNACE = 1.0E-10;
 const unsigned int MAX_OCTREE_TREE = 2;
 extern unsigned int MAX_RAY_HOP;

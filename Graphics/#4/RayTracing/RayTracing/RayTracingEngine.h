@@ -67,6 +67,9 @@ namespace Namse
 
 		unsigned int m_ReservedHopCount;
 		unsigned int m_ReserveSampling;
+
+		Namse::SpotLight m_RotateLight;
+
 	};
 }
 
