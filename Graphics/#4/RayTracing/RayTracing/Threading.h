@@ -2,8 +2,8 @@
 #include <atomic>
 
 void Work(int xi, int yi);
-#define ThreadWidth 1
-#define ThreadHeight 3
-#define Sampling 1
+#define ThreadWidth 2
+#define ThreadHeight 2
+extern unsigned int Sampling;
 extern std::atomic<bool> WorkerWait[ThreadWidth * ThreadHeight];
 extern bool AllWorkDown;

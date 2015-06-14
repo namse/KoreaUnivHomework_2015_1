@@ -66,6 +66,7 @@ namespace Namse
 		int m_ReservedHeight;
 
 		unsigned int m_ReservedHopCount;
+		unsigned int m_ReserveSampling;
 	};
 }
 

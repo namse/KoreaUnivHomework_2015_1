@@ -4,6 +4,7 @@
 #include <iostream>
 extern std::atomic<bool> WorkerWait[ThreadWidth * ThreadHeight] = { true, };
 extern bool AllWorkDown = false;
+unsigned int Sampling = 1;
 void Work(int xi, int yi)
 {
 	printf("%d,%d\n", xi, yi);
@@ -37,13 +38,6 @@ void Work(int xi, int yi)
 
 						color += g_RayTracingEngine->RayTrace(g_RayTracingEngine->m_Camera.m_Position, rayVec.Unit());
 					}
-				}
-				color.m_R = std::min(color.m_R, 1.f);
-				color.m_G = std::min(color.m_G, 1.f);
-				color.m_B = std::min(color.m_B, 1.f);
-				if (color.m_R >= 1.f)
-				{
-					int a = 5;
 				}
 				g_RayTracingEngine->m_ColorBuffer[x + y * g_RayTracingEngine->m_WindowWidth]
 					= color / (Sampling * Sampling);

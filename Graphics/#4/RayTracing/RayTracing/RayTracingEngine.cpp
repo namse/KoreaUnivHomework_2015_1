@@ -4,7 +4,7 @@
 Namse::RayTracingEngine* g_RayTracingEngine = nullptr;
 
 Namse::RayTracingEngine::RayTracingEngine()
-	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false), m_ReservedHopCount(MAX_RAY_HOP)
+	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false), m_ReservedHopCount(MAX_RAY_HOP), m_ReserveSampling(Sampling)
 {
 	m_RootNode.m_Position = Namse::Vector(0, 0, 0);
 	m_MaxVector.m_X = m_MaxVector.m_Y = m_MaxVector.m_Z = std::numeric_limits<double>::min();
@@ -61,6 +61,7 @@ void Namse::RayTracingEngine::OnDisplay()
 		Reshape(m_ReservedWidth, m_ReservedHeight);
 	}
 	MAX_RAY_HOP = m_ReservedHopCount;
+	Sampling = m_ReserveSampling;
 	if (m_ColorBuffer != nullptr)
 	{
 		// 1. reset octree
@@ -241,6 +242,8 @@ bool Namse::RayTracingEngine::OnKeyDown(unsigned int nChar)
 	if (toupper(nChar) == 'P') m_ReservedHopCount++;
 	if (toupper(nChar) == 'O') m_ReservedHopCount--;
 
+	if (toupper(nChar) == 'X') m_ReserveSampling++;
+	if (toupper(nChar) == 'Z') m_ReserveSampling--;
 
 	m_Camera.OnKeyDown(nChar);
 

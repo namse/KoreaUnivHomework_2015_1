@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Model.cpp">
-      <Filter>Nams</Filter>
-    </ClCompile>
     <ClCompile Include="NamsGraphics.cpp">
       <Filter>Nams</Filter>
     </ClCompile>
@@ -51,11 +48,11 @@
     <ClCompile Include="Sphere.cpp">
       <Filter>Sphere</Filter>
     </ClCompile>
+    <ClCompile Include="Robot.cpp">
+      <Filter>Nams\Robot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model.h">
-      <Filter>Nams</Filter>
-    </ClInclude>
     <ClInclude Include="NamsGraphics.h">
       <Filter>Nams</Filter>
     </ClInclude>
@@ -106,6 +103,9 @@
     <ClInclude Include="Sphere.h">
       <Filter>Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="Robot.h">
+      <Filter>Nams\Robot</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Nams">
@@ -155,6 +155,9 @@
     </Filter>
     <Filter Include="Sphere">
       <UniqueIdentifier>{d69ff413-a818-482d-bb9c-c46189735795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nams\Robot">
+      <UniqueIdentifier>{2f684329-f572-4e7e-b483-78ca7d0f6160}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
