@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutCreateWindow("2013210111_3");
+	glutCreateWindow("2013210111_4");
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(keyPressed);
 	glutMouseFunc(mouseClicked);
