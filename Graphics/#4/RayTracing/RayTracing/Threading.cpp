@@ -21,13 +21,24 @@ void Work(int xi, int yi)
 		{
 			for (int x = xi * width; x < (xi + 1) * width; x++)
 			{
-				//std::cout << xi << "/" << yi << "|-[" << x << "," << y << "]"<<std::endl;
-				vec4 rayVec4(g_RayTracingEngine->m_Camera.m_RayMatrix * vec4((float)x + 0.5f, (float)y + 0.5f, 0.0f, 1.0f));
+				Namse::Color color;
+				for (int dx = 0; dx < Sampling; dx++)
+				{
+					for (int dy = 0; dy < Sampling; dy++)
+					{
+						//std::cout << xi << "/" << yi << "|-[" << x << "," << y << "]"<<std::endl;
+						vec4 rayVec4(g_RayTracingEngine->m_Camera.m_RayMatrix * vec4((float)x + (1.f / (float)Sampling) * dx, (float)y + (1.f / (float)Sampling) * dy, 0.0f, 1.0f));
 
-				Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
+						Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
 
-				g_RayTracingEngine->m_ColorBuffer[x + y * g_RayTracingEngine->m_WindowWidth] 
-					= g_RayTracingEngine->RayTrace(g_RayTracingEngine->m_Camera.m_Position, rayVec.Unit(), 1);
+						color += g_RayTracingEngine->RayTrace(g_RayTracingEngine->m_Camera.m_Position, rayVec.Unit(), 1);
+					}
+				}
+				color.m_R = std::min(color.m_R, 1.f);
+				color.m_G = std::min(color.m_G, 1.f);
+				color.m_B = std::min(color.m_B, 1.f);
+				g_RayTracingEngine->m_ColorBuffer[x + y * g_RayTracingEngine->m_WindowWidth]
+					= color / (Sampling * Sampling);
 			}
 		}
 		WorkerWait[xi + yi * ThreadWidth] = true;
