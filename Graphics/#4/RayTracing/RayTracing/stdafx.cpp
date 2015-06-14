@@ -7,3 +7,5 @@
 // TODO: 필요한 추가 헤더는
 // 이 파일이 아닌 STDAFX.H에서 참조합니다.
 GLdouble g_ScreenLength = 0;
+
+unsigned int MAX_RAY_HOP = 2;

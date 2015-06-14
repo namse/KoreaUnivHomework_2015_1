@@ -4,7 +4,7 @@
 Namse::RayTracingEngine* g_RayTracingEngine = nullptr;
 
 Namse::RayTracingEngine::RayTracingEngine()
-	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false)
+	:m_Octree(), m_ColorBuffer(nullptr), m_IsReshapeReserved(false), m_ReservedHopCount(MAX_RAY_HOP)
 {
 	m_RootNode.m_Position = Namse::Vector(0, 0, 0);
 	m_MaxVector.m_X = m_MaxVector.m_Y = m_MaxVector.m_Z = std::numeric_limits<double>::min();
@@ -60,6 +60,7 @@ void Namse::RayTracingEngine::OnDisplay()
 	{
 		Reshape(m_ReservedWidth, m_ReservedHeight);
 	}
+	MAX_RAY_HOP = m_ReservedHopCount;
 	if (m_ColorBuffer != nullptr)
 	{
 		// 1. reset octree
@@ -96,21 +97,6 @@ void Namse::RayTracingEngine::OnDisplay()
 				break;
 		}
 
-		/*
-		for (int y = 0; y < m_WindowHeight; y++)
-		{
-		for (int x = 0; x < m_WindowWidth; x++)
-		{
-		vec4 rayVec4 (m_Camera.m_RayMatrix * vec4((float)x + 0.5f, (float)y + 0.5f, 0.0f, 1.0f));
-
-		Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
-
-		m_ColorBuffer[x + y * m_WindowWidth] = RayTrace(m_Camera.m_Position,
-		rayVec.Unit(),
-		1);
-		//printf("################\n");
-		}
-		}*/
 
 		glDrawPixels(m_WindowWidth, m_WindowHeight, GL_RGB, GL_FLOAT, m_ColorBuffer);
 	}
@@ -233,85 +219,6 @@ Namse::Color Namse::RayTracingEngine::RayTrace(Namse::Vector& from, Namse::Vecto
 	}
 	return retColor;
 
-	/*		if (currentHop < MAX_RAY_HOP)
-		{
-		// reflection
-		Namse::Vector reflectionVector = ray + triangle->m_NormalVector * (ray.DotProduct(-triangle->m_NormalVector)) * 2.f;
-		retColor += RayTrace(contactPoint, reflectionVector.Unit(), currentHop + 1, triangle) * triangle->m_ReflectionFactor;
-
-		// transmission
-		// ½º³ÚÀÇ ¹ýÄ¢ ¾È¾¸
-		Namse::Vector transmissionVector = ray;
-		retColor += RayTrace(contactPoint, transmissionVector.Unit(), currentHop + 1, triangle) * triangle->m_TransmissionFactor;
-		}
-		}
-
-		if (prevTriangle != nullptr)
-		{
-		// light
-		for (auto& light : m_LightList)
-		{
-		switch (light->m_LightType)
-		{
-		case SPOT_LIGHT:
-		{
-		Namse::Vector toLightRay = (light->m_Position - contactPoint).Unit();
-		auto dot = toLightRay.DotProduct(prevTriangle->m_NormalVector);
-
-		if (dot <= 0)
-		break;
-
-		Namse::Triangle* shadowMaker;
-		GLdouble shadowMakerDistance;
-		Namse::Vector shadowPoint;
-
-		if (m_Octree.FindNearestTriangle(contactPoint, (light->m_Position - contactPoint).Unit()
-		, (light->m_Position - contactPoint).Norm() + MIN_DISTNACE, shadowMakerDistance, shadowPoint, &shadowMaker))
-		{
-		if (currentHop < MAX_RAY_HOP)
-		{
-		retColor += RayTrace(contactPoint,
-		(light->m_Position - contactPoint).Unit(),
-		currentHop + 1, prevTriangle); //* prevTriangle->m_TransmissionFactor;
-		}
-		}
-		else
-		{
-		auto lightDistance = (contactPoint - light->m_Position).Norm();
-		if (lightDistance != 0)
-		retColor += light->m_Color * (dot)* light->m_LightPower / (lightDistance);
-		}
-		}break;
-		case DIRECTIONAL_LIGHT:
-		{
-		Namse::Triangle* shadowMaker;
-		GLdouble shadowMakerDistance;
-		Namse::Vector shadowPoint;
-
-		if (m_Octree.FindNearestTriangle(contactPoint, -((Namse::DirectionalLight*)(light))->m_Ray
-		, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
-		{
-		if (currentHop < MAX_RAY_HOP)
-		{
-		retColor += RayTrace(shadowPoint,
-		light->m_Position - contactPoint,
-		currentHop + 1, prevTriangle) * shadowMaker->m_TransmissionFactor;
-		}
-		}
-		else
-		{
-		Namse::Vector lightRay = -((Namse::DirectionalLight*)(light))->m_Ray;
-		auto dot = lightRay.DotProduct(prevTriangle->m_NormalVector);
-		if (dot > 0)
-		retColor += light->m_Color * dot * light->m_LightPower;
-		}
-		}break;
-		}
-
-		}
-		}
-		return retColor;
-		*/
 }
 
 void Namse::RayTracingEngine::ThreadSetup()
@@ -326,4 +233,16 @@ void Namse::RayTracingEngine::ThreadSetup()
 			m_Threads[x + y * ThreadWidth] = std::thread(Work, x, y);
 		}
 	}
+}
+
+
+bool Namse::RayTracingEngine::OnKeyDown(unsigned int nChar)
+{
+	if (toupper(nChar) == 'P') m_ReservedHopCount++;
+	if (toupper(nChar) == 'O') m_ReservedHopCount--;
+
+
+	m_Camera.OnKeyDown(nChar);
+
+	return true;
 }

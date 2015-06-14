@@ -39,6 +39,8 @@ namespace Namse
 
 		void	ReserveReshape(int w, int h);
 		
+		bool OnKeyDown(unsigned int nChar);
+
 	private:
 		void	Reshape(int w, int h);
 
@@ -62,6 +64,8 @@ namespace Namse
 		bool m_IsReshapeReserved;
 		int m_ReservedWidth;
 		int m_ReservedHeight;
+
+		unsigned int m_ReservedHopCount;
 	};
 }
 

@@ -48,6 +48,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Cube</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Sphere</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h">
@@ -100,6 +103,9 @@
     <ClInclude Include="Cube.h">
       <Filter>Cube</Filter>
     </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Sphere</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Nams">
@@ -146,6 +152,9 @@
     </Filter>
     <Filter Include="Cube">
       <UniqueIdentifier>{24c5854e-1b94-4a4f-a47e-79ecaee08c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sphere">
+      <UniqueIdentifier>{d69ff413-a818-482d-bb9c-c46189735795}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

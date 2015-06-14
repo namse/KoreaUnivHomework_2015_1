@@ -16,6 +16,7 @@
 #include "Threading.h"
 
 #include "Cube.h"
+#include "Sphere.h"
 
 
 Namse::Vector g_Eye(0, 0, -10);
@@ -129,7 +130,7 @@ void Reshape(int w, int h)
 }
 
 void keyPressed(unsigned char key, int x, int y) {
-	g_RayTracingEngine->GetCamera()->OnKeyDown(key);
+	g_RayTracingEngine->OnKeyDown(key);
 }
 void mouseClicked(int button, int state, int x, int y)
 {
@@ -202,6 +203,11 @@ int main(int argc, char* argv[])
 
 	g_RayTracingEngine->AddChild(&cube1);
 	g_RayTracingEngine->AddChild(&cube2);
+
+	Namse::Sphere sphere(0.5);
+	sphere.m_Position = Namse::Vector(0, 0, -2.f);
+
+	g_RayTracingEngine->AddChild(&sphere);
 
 
 	LoadModel();
