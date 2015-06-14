@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="NamsGraphics.h">
+      <Filter>NamsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>NamsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>NamsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>NamsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>NamsLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Gouraund Shading.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Node.cpp">
+      <Filter>NamsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>NamsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>NamsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>NamsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="NamsGraphics.cpp">
+      <Filter>NamsLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="NamsLibrary">
+      <UniqueIdentifier>{53950f3a-a1de-427f-ad3b-30755f8fbdb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Color">
+      <UniqueIdentifier>{1f101bde-f4ed-48bc-bc7d-2f8c59d72849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{7bbcfc07-6a36-4b0d-848f-9ebf73e68128}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
