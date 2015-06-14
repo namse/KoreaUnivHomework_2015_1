@@ -28,6 +28,7 @@ namespace Namse
 			OUT Namse::Vector& contactVector,
 			OUT Triangle** triangle);
 
+		bool			m_IsDirty;
 	private:
 		// for child
 		Octree(
@@ -50,5 +51,6 @@ namespace Namse
 		std::vector<Triangle*>	m_Triangles;
 
 		unsigned	int			m_Depth;
+		
 	};
 }

@@ -23,5 +23,9 @@ namespace Namse
 			OUT			Namse::Vector*		contactPoint	=	nullptr
 			);
 
+		// below code from http://gamedev.stackexchange.com/questions/18436/most-efficient-aabb-vs-ray-collision-algorithms
+		bool AABB_RAY_Test(Namse::Vector& origin, Namse::Vector& ray, Namse::Vector& B1, Namse::Vector& B2, float* p_length = nullptr);
+		
+
 	};
 }

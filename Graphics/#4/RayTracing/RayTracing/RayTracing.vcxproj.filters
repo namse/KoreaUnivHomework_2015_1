@@ -42,6 +42,9 @@
     <ClCompile Include="Light.cpp">
       <Filter>Nams\Definition\Light</Filter>
     </ClCompile>
+    <ClCompile Include="Threading.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h">
@@ -88,6 +91,9 @@
     <ClInclude Include="Light.h">
       <Filter>Nams\Definition\Light</Filter>
     </ClInclude>
+    <ClInclude Include="Threading.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Nams">
@@ -128,6 +134,9 @@
     </Filter>
     <Filter Include="Nams\Definition\Light">
       <UniqueIdentifier>{6fbfb792-61b9-4b36-a52d-fdea90ad7781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{94dc0e76-45d7-4723-991d-7c6393b47c41}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

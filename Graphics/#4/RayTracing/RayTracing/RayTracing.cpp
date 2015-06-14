@@ -13,6 +13,8 @@
 #include "Color.h"
 #include "Model.h"
 
+#include "Threading.h"
+
 
 Namse::Vector g_Eye(0, 0, -10);
 
@@ -127,16 +129,36 @@ void Reshape(int w, int h)
 void keyPressed(unsigned char key, int x, int y) {
 	g_RayTracingEngine->GetCamera()->OnKeyDown(key);
 }
-void mouseMoved(int x, int y)
+void mouseClicked(int button, int state, int x, int y)
 {
-	static int prevX = -1;
-	static int prevY = -1;
-	if (prevX == -1) prevX = x;
-	if (prevY == -1) prevY = y;
-	g_RayTracingEngine->GetCamera()->OnMouseMove(x - prevX, y - prevY);
+	if (button == GLUT_LEFT_BUTTON)
+	{
+		if (state == GLUT_UP)
+		{
+			IsLeftClicked = false;
+			printf("~~~~~~~~~~\n");
+		}
+		if (state == GLUT_DOWN)
+		{
+			prevX = x;
+			prevY = y;
+			IsLeftClicked = true;
+			printf("CLICKED!!!!!\n");
+		}
+	}
+	printf("##################   %d\n", state);
 
-	prevX = x;
-	prevY = y;
+}
+void mouseMoved( int x, int y)
+{
+	if (IsLeftClicked == true)
+	{
+		g_RayTracingEngine->GetCamera()->OnMouseMove(x - prevX, y - prevY);
+
+		prevX = x;
+		prevY = y;
+	}
+	printf("(%d , %d)\n", prevX, prevY);
 }
 void Display()
 {
@@ -149,11 +171,16 @@ void Display()
 }
 int main(int argc, char* argv[])
 {
+
+	IsLeftClicked = false;
+
 	int a = sizeof(Namse::Color);
 	g_RayTracingEngine = new Namse::RayTracingEngine();
 
 	g_RayTracingEngine->GetCamera()->Look(Namse::Vector(0, 0, 2.5f), Namse::Vector(0, 0, 0.f), false);
-	
+
+	g_RayTracingEngine->ThreadSetup();
+
 	Namse::SpotLight light;
 	light.m_Position = Namse::Vector(5, 0, 0);
 	light.m_Color = Namse::Color(1, 0, 0);
@@ -165,10 +192,10 @@ int main(int argc, char* argv[])
 			Namse::Vector(0.5f, 0.5f, -0.5f),
 			Namse::Vector(0.5f, -0.5f, 0.5f),
 			Namse::Vector(0.5f, -0.5f, -0.5f),
-			Namse::Vector(-0.5f, -0.5f, -0.5f),
-			Namse::Vector(-0.5f, -0.5f, 0.5f),
 			Namse::Vector(-0.5f, 0.5f, 0.5f),
-			Namse::Vector(-0.5f, 0.5f, -0.5f)
+			Namse::Vector(-0.5f, 0.5f, -0.5f),
+			Namse::Vector(-0.5f, -0.5f, 0.5f),
+			Namse::Vector(-0.5f, -0.5f, -0.5f)
 	};
 
 	Namse::Triangle Triangles[12]{
@@ -180,14 +207,15 @@ int main(int argc, char* argv[])
 			, Namse::Triangle(&Vertex[1], &Vertex[5], &Vertex[4])
 			, Namse::Triangle(&Vertex[7], &Vertex[3], &Vertex[2])
 			, Namse::Triangle(&Vertex[2], &Vertex[6], &Vertex[7])
-			, Namse::Triangle(&Vertex[6], &Vertex[2], &Vertex[0])
-			, Namse::Triangle(&Vertex[0], &Vertex[4], &Vertex[6])
+			, Namse::Triangle(&Vertex[2], &Vertex[4], &Vertex[6])
+			, Namse::Triangle(&Vertex[2], &Vertex[0], &Vertex[4])
 			, Namse::Triangle(&Vertex[3], &Vertex[7], &Vertex[5])
 			, Namse::Triangle(&Vertex[5], &Vertex[1], &Vertex[3])
 	};
-	//for (int i = 0; i < 12; i++)
-	//	g_RayTracingEngine->AddChild(&Triangles[i]);
-	g_RayTracingEngine->AddChild(&Triangles[9]);
+	for (int i = 0; i < 12; i++)
+		g_RayTracingEngine->AddChild(&Triangles[i]);
+	//g_RayTracingEngine->AddChild(&Triangles[8]);
+	//g_RayTracingEngine->AddChild(&Triangles[9]);
 
 	LoadModel();
 	CalculateNormal();
@@ -197,7 +225,8 @@ int main(int argc, char* argv[])
 	glutCreateWindow("2013210111_3");
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(keyPressed);
-	glutPassiveMotionFunc(mouseMoved);
+	glutMouseFunc(mouseClicked);
+	glutMotionFunc(mouseMoved);
 	glutDisplayFunc(Display);
 	glutIdleFunc(Display);
 	glutMainLoop();

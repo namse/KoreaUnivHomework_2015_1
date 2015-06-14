@@ -3,6 +3,8 @@
 #include "Camera.h"
 #include "Color.h"
 #include "Light.h"
+#include <thread>
+#include "Threading.h"
 namespace Namse
 {
 	class RayTracingEngine
@@ -27,6 +29,15 @@ namespace Namse
 
 		Namse::Vector m_MinVector;
 		Namse::Vector m_MaxVector;
+
+		unsigned int m_WindowWidth;
+		unsigned int m_WindowHeight;
+		Camera m_Camera;
+		Namse::Color* m_ColorBuffer;
+
+		void	ThreadSetup();
+
+		
 	private:
 		unsigned int GetBufferSize()
 		{
@@ -35,18 +46,15 @@ namespace Namse
 
 
 		Octree m_Octree;
-		Camera m_Camera;
 
-		unsigned int m_WindowWidth;
-		unsigned int m_WindowHeight;
 
-		Namse::Color* m_ColorBuffer;
 		size_t m_BufferSize;
 
 		Node	m_RootNode;
 
 		std::vector<Light*> m_LightList;
 
+		std::thread m_Threads[ThreadWidth * ThreadHeight];
 	};
 }
 
