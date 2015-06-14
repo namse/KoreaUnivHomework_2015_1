@@ -41,9 +41,9 @@ Namse::Robot::Robot()
 			int a, b, c;
 			sstr >> a >> b >> c;
 
-			Namse::Triangle* tri = new Namse::Triangle(m_Vertex.at(a),
-				m_Vertex.at(b),
-				m_Vertex.at(c));
+			Namse::Triangle* tri = new Namse::Triangle(m_Vertex.at(a-1),
+				m_Vertex.at(b-1),
+				m_Vertex.at(c-1));
 
 			AddChild(tri);
 

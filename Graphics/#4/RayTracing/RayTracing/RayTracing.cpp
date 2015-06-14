@@ -93,6 +93,7 @@ int main(int argc, char* argv[])
 	light.m_LightPower = 5;
 	g_RayTracingEngine->AddLight(&light);
 
+
 	
 	Namse::Cube cube1;
 	cube1.m_Position = Namse::Vector(1.f, 0.f, 0);
