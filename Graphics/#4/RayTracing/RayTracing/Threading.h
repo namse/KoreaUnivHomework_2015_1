@@ -3,7 +3,7 @@
 
 void Work(int xi, int yi);
 #define ThreadWidth 1
-#define ThreadHeight 2
-#define Sampling 2
+#define ThreadHeight 3
+#define Sampling 1
 extern std::atomic<bool> WorkerWait[ThreadWidth * ThreadHeight];
 extern bool AllWorkDown;

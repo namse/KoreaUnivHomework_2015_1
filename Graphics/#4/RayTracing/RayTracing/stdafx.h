@@ -24,8 +24,9 @@ extern GLdouble g_ScreenLength;
 
 
 const GLdouble MAX_DISTNACE = 100;
-const unsigned int MAX_OCTREE_TREE = 2;
-const unsigned int MAX_RAY_HOP = 2;
+const GLdouble MIN_DISTNACE = 1.0E-10;
+const unsigned int MAX_OCTREE_TREE = 4;
+const unsigned int MAX_RAY_HOP = 4;
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 

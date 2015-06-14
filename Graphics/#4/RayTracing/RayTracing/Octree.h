@@ -16,7 +16,7 @@ namespace Namse
 			float			width
 			);
 		void			Clear();
-		void			Add(
+		bool			Add(
 			Triangle*	triangle
 			);
 

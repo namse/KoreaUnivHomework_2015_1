@@ -62,7 +62,7 @@ void Namse::Triangle::OnDraw(Vector& BasePosition)
 	for (int i = 0; i < 3; i++)
 	{
 		m_NormalVectors[i] = m_NormalVector.CrossProduct(*m_Vector[(i + 1) % 3] - *m_Vector[i]).Unit();
-		m_Distnace[i] = m_NormalVectors[i].DotProduct(*m_Vector[i]);
+		m_Distnace[i] = m_NormalVectors[i].DotProduct(*m_Vector[i] + m_AbsolutePosition);
 	}
 
 	g_RayTracingEngine->PushTriangleToOctree(this);

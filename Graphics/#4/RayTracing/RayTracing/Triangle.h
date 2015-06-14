@@ -10,7 +10,7 @@ namespace Namse
 		Vector* m_Vector[3];
 
 		Triangle(Vector* _first, Vector* _second, Vector* _third)
-			:m_ReflectionFactor(0.5), m_TransmissionFactor(0.1)
+			:m_ReflectionFactor(0.5), m_TransmissionFactor(0.3)
 		{
 			m_Vector[0] = _first, m_Vector[1] = _second, m_Vector[2] = _third;
 		}

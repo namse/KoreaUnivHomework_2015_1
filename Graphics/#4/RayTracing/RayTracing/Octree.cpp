@@ -42,13 +42,136 @@ void Namse::Octree::Clear()
 					m_Next[x][y][z]->Clear();
 }
 
-void Namse::Octree::Add(Triangle* triangle)
+bool Namse::Octree::Add(Triangle* triangle)
 {
-	if (triangle->m_Vector[0]->m_Z == triangle->m_Vector[1]->m_Z 
-		&& triangle->m_Vector[1]->m_Z == triangle->m_Vector[2]->m_Z)
+	if (m_Depth == MAX_OCTREE_TREE)
 	{
-		int a = 5;
+		m_Triangles.push_back(triangle);
+		return true;
 	}
+
+	if ((triangle->m_MinVector.m_X > m_MinX)
+			&& (triangle->m_MaxVector.m_X <= m_MaxX)
+			&& (triangle->m_MinVector.m_Y > m_MinY)
+			&& (triangle->m_MaxVector.m_Y <= m_MaxY)
+			&& (triangle->m_MinVector.m_Z > m_MinZ)
+			&& (triangle->m_MaxVector.m_Z <= m_MaxZ))
+		{
+			bool inside = false;
+			for (int x = 0; x < 2; x++)
+				for (int y = 0; y < 2; y++)
+					for (int z = 0; z < 2; z++)
+					{
+						if (m_Next[x][y][z] == nullptr)
+							m_Next[x][y][z] = new Octree(
+							m_Center + Namse::Vector(
+							(m_Width * (2 * x - 1) / 4),
+							(m_Width * (2 * y - 1) / 4),
+							(m_Width * (2 * z - 1) / 4))
+							, m_Width / 2, m_Depth + 1);
+
+						inside = m_Next[x][y][z]->Add(triangle);
+						if (inside == true)
+							goto end;
+					}
+		end:
+			if (inside == false)
+				m_Triangles.push_back(triangle);
+			return true;
+		}
+	if (m_Depth == 0)
+	{
+		m_Triangles.push_back(triangle);
+		return true;
+	}
+	return false;
+
+
+
+	/*
+	bool inside = false;
+
+	int xInit, xMax, yInit, yMax, zInit, zMax;
+	xInit = yInit = zInit = 0;
+	xMax = yMax = zMax = 2;
+	if (triangle->m_MinVector.m_X > m_MaxX)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MinVector.m_X > m_Center.m_X)
+		xInit = 1;
+
+	if (triangle->m_MinVector.m_Y > m_MaxY)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MinVector.m_Y > m_Center.m_Y)
+		yInit = 1;
+
+	if (triangle->m_MinVector.m_Z > m_MaxZ)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MinVector.m_Z > m_Center.m_Z)
+		zInit = 1;
+
+	if (triangle->m_MaxVector.m_X <= m_MinX)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MaxVector.m_X <= m_Center.m_X)
+		xMax = 1;
+
+	if (triangle->m_MaxVector.m_Y <= m_MinY)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MaxVector.m_Y <= m_Center.m_Y)
+		yMax = 1;
+
+	if (triangle->m_MaxVector.m_Z <= m_MinZ)
+	{
+		inside = false;
+		goto end;
+	}
+	else if (triangle->m_MaxVector.m_Z <= m_Center.m_Z)
+		zMax = 1;
+
+	for (int x = xInit; x < xMax; x++)
+		for (int y = yInit; y < yMax; y++)
+			for (int z = zInit; z < zMax; z++)
+			{
+				if (m_Next[x][y][z] == nullptr)
+					m_Next[x][y][z] = new Octree(
+					m_Center + Namse::Vector(
+					(m_Width * (2 * x - 1) / 4),
+					(m_Width * (2 * y - 1) / 4),
+					(m_Width * (2 * z - 1) / 4))
+					, m_Width / 2, m_Depth + 1);
+
+				inside = m_Next[x][y][z]->Add(triangle);
+				if (inside == true)
+					goto end;
+			}
+end:
+	if (inside == false)
+	{
+		m_Triangles.push_back(triangle);
+		return true;
+	}
+	else if (inside == true)
+		return true;
+
+		*/
+
+
+
+	/*
 	m_IsDirty = false;
 
 	// bigger than AABB
@@ -113,6 +236,7 @@ void Namse::Octree::Add(Triangle* triangle)
 					m_Next[x][y][z]->Add(triangle);
 				}
 	}
+	*/
 }
 
 void Namse::Octree::Reset(Namse::Vector& center, float width)
@@ -151,21 +275,18 @@ bool Namse::Octree::FindNearestTriangle(IN Vector& startPoint, IN Vector& rayVec
 
 	for (auto& tri : m_Triangles)
 	{
-		if (tri->m_Vector[0]->m_Z == tri->m_Vector[1]->m_Z && tri->m_Vector[1]->m_Z == tri->m_Vector[2]->m_Z)
-		{
-			int a = 5;
-		}
 		GLdouble tempDistance;
 		Namse::Vector contactPoint;
-		if (Namse::IntersectTest::IsIntersected(tri, startPoint, rayVec, currentShortestDistance,
+		if (Namse::IntersectTest::IsIntersected(tri, startPoint, rayVec,
 			&tempDistance, &contactPoint))
 		{
-			if (tempDistance < currentShortestDistance && tempDistance > 0)
+			if (tempDistance < currentShortestDistance && tempDistance > MIN_DISTNACE)
 			{
 				retTri = tri;
 				currentShortestDistance = tempDistance;
 				retContactVector = contactPoint;
 			}
+
 		}
 	}
 
@@ -176,7 +297,7 @@ bool Namse::Octree::FindNearestTriangle(IN Vector& startPoint, IN Vector& rayVec
 				for (int z = 0; z < 2; z++)
 				{
 
-					if (m_Next[x][y][z] != nullptr && m_Next[x][y][z]->m_IsDirty == false)
+					if (m_Next[x][y][z] != nullptr)// && m_Next[x][y][z]->m_IsDirty == false)
 					{
 
 						Namse::Vector B1(m_Center.m_X - (m_Width / 2.f) * (1 - x),

@@ -19,7 +19,8 @@ namespace Namse
 		void	AddChild(Node* node);
 		void	RemoveChild(Node* node);
 
-		Color	RayTrace(Namse::Vector& from, Namse::Vector& ray, unsigned int currentHop);
+		Color	RayTrace(Namse::Vector& from, Namse::Vector& ray);
+		Color	RayTrace(Namse::Triangle* triangle, Namse::Vector& contactPoint, Namse::Vector& ray, unsigned int currentHop);
 
 		Camera*	GetCamera(){ return &m_Camera; }
 

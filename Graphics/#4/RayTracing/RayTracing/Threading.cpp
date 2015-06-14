@@ -21,22 +21,30 @@ void Work(int xi, int yi)
 		{
 			for (int x = xi * width; x < (xi + 1) * width; x++)
 			{
-				Namse::Color color;
-				for (int dx = 0; dx < Sampling; dx++)
+				if (x == 67 && y == 56)
 				{
-					for (int dy = 0; dy < Sampling; dy++)
+					int a = 5;
+				}
+				Namse::Color color;
+				for (int dx = 1; dx <= Sampling; dx++)
+				{
+					for (int dy = 1; dy <= Sampling; dy++)
 					{
 						//std::cout << xi << "/" << yi << "|-[" << x << "," << y << "]"<<std::endl;
-						vec4 rayVec4(g_RayTracingEngine->m_Camera.m_RayMatrix * vec4((float)x + (1.f / (float)Sampling) * dx, (float)y + (1.f / (float)Sampling) * dy, 0.0f, 1.0f));
+						vec4 rayVec4(g_RayTracingEngine->m_Camera.m_RayMatrix * vec4((float)x + (1.f / ((float)Sampling+1.f)) * dx, (float)y + (1.f / ((float)Sampling+1.f)) * dy, 0.0f, 1.0f));
 
 						Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
 
-						color += g_RayTracingEngine->RayTrace(g_RayTracingEngine->m_Camera.m_Position, rayVec.Unit(), 1);
+						color += g_RayTracingEngine->RayTrace(g_RayTracingEngine->m_Camera.m_Position, rayVec.Unit());
 					}
 				}
 				color.m_R = std::min(color.m_R, 1.f);
 				color.m_G = std::min(color.m_G, 1.f);
 				color.m_B = std::min(color.m_B, 1.f);
+				if (color.m_R >= 1.f)
+				{
+					int a = 5;
+				}
 				g_RayTracingEngine->m_ColorBuffer[x + y * g_RayTracingEngine->m_WindowWidth]
 					= color / (Sampling * Sampling);
 			}

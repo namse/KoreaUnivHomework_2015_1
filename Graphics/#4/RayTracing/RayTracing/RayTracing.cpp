@@ -15,6 +15,8 @@
 
 #include "Threading.h"
 
+#include "Cube.h"
+
 
 Namse::Vector g_Eye(0, 0, -10);
 
@@ -185,43 +187,22 @@ int main(int argc, char* argv[])
 	directionalLight.m_Color = Namse::Color(0, 0, 1);
 	directionalLight.m_LightPower = 1;
 	directionalLight.m_Ray = Namse::Vector(-1, -1, -1).Unit();
-	g_RayTracingEngine->AddLight(&directionalLight);
+	//g_RayTracingEngine->AddLight(&directionalLight);
 
 	Namse::SpotLight light;
-	light.m_Position = Namse::Vector(1, 1, -1);
+	light.m_Position = Namse::Vector(2, 1, 1);
 	light.m_Color = Namse::Color(1, 0.5f, 0.5f);
-	light.m_LightPower = 1;
+	light.m_LightPower = 5;
 	g_RayTracingEngine->AddLight(&light);
 
-	Namse::Vector Vertex[8]{
-			Namse::Vector(0.5f, 0.5f, 0.5f),
-			Namse::Vector(0.5f, 0.5f, -0.5f),
-			Namse::Vector(0.5f, -0.5f, 0.5f),
-			Namse::Vector(0.5f, -0.5f, -0.5f),
-			Namse::Vector(-0.5f, 0.5f, 0.5f),
-			Namse::Vector(-0.5f, 0.5f, -0.5f),
-			Namse::Vector(-0.5f, -0.5f, 0.5f),
-			Namse::Vector(-0.5f, -0.5f, -0.5f)
-	};
+	Namse::Cube cube1;
+	cube1.m_Position = Namse::Vector(1.f, 0.f, 0);
+	Namse::Cube cube2;
+	cube2.MoveTo(Namse::Vector(-1, 0, 0));
 
-	Namse::Triangle Triangles[12]{
-		Namse::Triangle(&Vertex[2], &Vertex[3], &Vertex[1])
-			, Namse::Triangle(&Vertex[1], &Vertex[0], &Vertex[2])
-			, Namse::Triangle(&Vertex[7], &Vertex[6], &Vertex[4])
-			, Namse::Triangle(&Vertex[4], &Vertex[5], &Vertex[7])
-			, Namse::Triangle(&Vertex[4], &Vertex[0], &Vertex[1])
-			, Namse::Triangle(&Vertex[1], &Vertex[5], &Vertex[4])
-			, Namse::Triangle(&Vertex[7], &Vertex[3], &Vertex[2])
-			, Namse::Triangle(&Vertex[2], &Vertex[6], &Vertex[7])
-			, Namse::Triangle(&Vertex[2], &Vertex[4], &Vertex[6])
-			, Namse::Triangle(&Vertex[2], &Vertex[0], &Vertex[4])
-			, Namse::Triangle(&Vertex[3], &Vertex[7], &Vertex[5])
-			, Namse::Triangle(&Vertex[5], &Vertex[1], &Vertex[3])
-	};
-	for (int i = 0; i < 12; i++)
-		g_RayTracingEngine->AddChild(&Triangles[i]);
-	//g_RayTracingEngine->AddChild(&Triangles[8]);
-	//g_RayTracingEngine->AddChild(&Triangles[9]);
+	g_RayTracingEngine->AddChild(&cube1);
+	g_RayTracingEngine->AddChild(&cube2);
+
 
 	LoadModel();
 	CalculateNormal();

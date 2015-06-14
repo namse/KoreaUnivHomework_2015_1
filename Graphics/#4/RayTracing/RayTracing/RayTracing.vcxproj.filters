@@ -45,6 +45,9 @@
     <ClCompile Include="Threading.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Cube</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h">
@@ -94,6 +97,9 @@
     <ClInclude Include="Threading.h">
       <Filter>Threading</Filter>
     </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Cube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Nams">
@@ -137,6 +143,9 @@
     </Filter>
     <Filter Include="Threading">
       <UniqueIdentifier>{94dc0e76-45d7-4723-991d-7c6393b47c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cube">
+      <UniqueIdentifier>{24c5854e-1b94-4a4f-a47e-79ecaee08c18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

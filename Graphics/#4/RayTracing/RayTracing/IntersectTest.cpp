@@ -1,16 +1,17 @@
 #include "stdafx.h"
 #include "IntersectTest.h"
-
+/*
 bool Namse::IntersectTest::IsIntersected(
 	IN const Namse::Triangle* triangle, 
 	IN const Namse::Vector& startPoint, 
 	IN const Namse::Vector& rayVec, 
-	IN const GLdouble maxDistance /*= MAX_DISTNACE*/, 
-	OUT GLdouble* distance /*= nullptr*/, 
-	OUT Namse::Vector* contactPoint /*= nullptr */)
+	IN const GLdouble maxDistance
+	OUT GLdouble* distance
+	OUT Namse::Vector* contactPoint)
 {
 	auto normal_Dot_Ray = triangle->m_NormalVector.DotProduct(rayVec);
 	GLdouble retDistance = 0;
+	//if (normal_Dot_Ray > 0) normal_Dot_Ray *= -1;
 	if (normal_Dot_Ray < 0)
 	{
 		retDistance = (triangle->m_NormalVector.DotProduct(startPoint) - triangle->m_FirstVectorOnNormalVectorCoordination) / (-normal_Dot_Ray);
@@ -29,6 +30,64 @@ bool Namse::IntersectTest::IsIntersected(
 		}
 	}
 
+	return false;
+}
+*/
+#define EPSILON 0.000001
+
+bool Namse::IntersectTest::IsIntersected(
+	Namse::Triangle* triangle,
+	Namse::Vector&    origin,  //Ray origin
+	Namse::Vector&    ray,  //Ray direction
+	OUT			GLdouble*			distance,
+	OUT			Namse::Vector*		contactPoint)
+{
+	Namse::Vector e1, e2;  //Edge1, Edge2
+	Namse::Vector P, Q, T;
+	float det, inv_det, u, v;
+	float t;
+	Namse::Vector AbsVector[3]{Namse::Vector(*triangle->m_Vector[0] + triangle->m_AbsolutePosition),
+		Namse::Vector(*triangle->m_Vector[1] + triangle->m_AbsolutePosition),
+		Namse::Vector(*triangle->m_Vector[2] + triangle->m_AbsolutePosition)};
+
+	//Find vectors for two edges sharing triangle->m_Vector[0]
+	e1 = AbsVector[1] - AbsVector[0];
+	e2 = AbsVector[2] - AbsVector[0];
+	//Begin calculating determinant - also used to calculate u parameter
+	P = ray.CrossProduct(e2);
+	//if determinant is near zero, ray lies in plane of triangle
+	det = e1.DotProduct(P);
+
+	//NOT CULLING
+	if (det > -EPSILON && det < EPSILON) return false;
+	inv_det = 1.f / det;
+
+	//calculate distance from triangle->m_Vector[0] to ray origin
+	T = origin - AbsVector[0];
+
+	//Calculate u parameter and test bound
+	u = T.DotProduct(P) * inv_det;
+
+	//The intersection lies outside of the triangle
+	if (u < 0.f || u > 1.f) return false;
+
+	//Prepare to test v parameter
+	Q = T.CrossProduct(e1);
+
+	//Calculate V parameter and test bound
+	v = ray.DotProduct(Q) * inv_det;
+	//The intersection lies outside of the triangle
+	if (v < 0.f || u + v  > 1.f) return false;
+
+	t = e2.DotProduct(Q) * inv_det;
+
+	if (t > EPSILON) { //ray intersection
+		*contactPoint = origin + ray * t;
+		*distance = (origin - *contactPoint).Norm();
+		return true;
+	}
+
+	// No hit, no win
 	return false;
 }
 

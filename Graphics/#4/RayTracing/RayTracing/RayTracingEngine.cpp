@@ -14,6 +14,12 @@ Namse::RayTracingEngine::RayTracingEngine()
 
 Namse::RayTracingEngine::~RayTracingEngine()
 {
+	AllWorkDown = true;
+	for (auto& thread : m_Threads)
+		thread.join();
+
+	if (m_ColorBuffer != nullptr)
+		delete m_ColorBuffer;
 }
 
 void Namse::RayTracingEngine::PushTriangleToOctree(Triangle* triangle)
@@ -58,14 +64,14 @@ void Namse::RayTracingEngine::OnDisplay()
 	{
 		// 1. reset octree
 		// 
-		m_Octree.Reset(Namse::Vector(0.f, 0.f, 0.f), std::min((m_MaxVector - m_MinVector).Norm(), MAX_DISTNACE));
+		m_Octree.Reset(Namse::Vector(0.f, 0.f, 0.f), 4 * std::min(std::min((m_MaxVector - Namse::Vector(0.f, 0.f, 0.f)).Norm(), (m_MinVector - Namse::Vector(0.f, 0.f, 0.f)).Norm()), MAX_DISTNACE));
 
 		double a = (m_MaxVector - m_MinVector).Norm();
 		m_MaxVector.m_X = m_MaxVector.m_Y = m_MaxVector.m_Z = std::numeric_limits<double>::min();
 		m_MinVector.m_X = m_MinVector.m_Y = m_MinVector.m_Z = std::numeric_limits<double>::max();
 
 		// 2. push nodes to octree
-		m_RootNode.OnDraw(Namse::Vector(0.f,0.f,0.f));
+		m_RootNode.OnDraw(Namse::Vector(0.f, 0.f, 0.f));
 
 		// 3. Ray Trace start
 
@@ -93,22 +99,22 @@ void Namse::RayTracingEngine::OnDisplay()
 		/*
 		for (int y = 0; y < m_WindowHeight; y++)
 		{
-			for (int x = 0; x < m_WindowWidth; x++)
-			{
-				vec4 rayVec4 (m_Camera.m_RayMatrix * vec4((float)x + 0.5f, (float)y + 0.5f, 0.0f, 1.0f));
+		for (int x = 0; x < m_WindowWidth; x++)
+		{
+		vec4 rayVec4 (m_Camera.m_RayMatrix * vec4((float)x + 0.5f, (float)y + 0.5f, 0.0f, 1.0f));
 
-				Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
+		Namse::Vector rayVec(rayVec4.x, rayVec4.y, rayVec4.z);
 
-				m_ColorBuffer[x + y * m_WindowWidth] = RayTrace(m_Camera.m_Position,
-				rayVec.Unit(),
-				1);
-				//printf("################\n");
-			}
+		m_ColorBuffer[x + y * m_WindowWidth] = RayTrace(m_Camera.m_Position,
+		rayVec.Unit(),
+		1);
+		//printf("################\n");
+		}
 		}*/
 
 		glDrawPixels(m_WindowWidth, m_WindowHeight, GL_RGB, GL_FLOAT, m_ColorBuffer);
 	}
-	printf("%d\n",glutGet(GLUT_ELAPSED_TIME));
+	printf("%d\n", glutGet(GLUT_ELAPSED_TIME));
 }
 
 void Namse::RayTracingEngine::AddChild(Node* node)
@@ -121,90 +127,191 @@ void Namse::RayTracingEngine::RemoveChild(Node* node)
 	m_RootNode.RemoveChild(node);
 }
 
-Namse::Color Namse::RayTracingEngine::RayTrace(Namse::Vector& from, Namse::Vector& ray, unsigned int currentHop)
+Namse::Color Namse::RayTracingEngine::RayTrace(Namse::Triangle* triangle, Namse::Vector& contactPoint, Namse::Vector& ray, unsigned int currentHop)
+{
+	Color retColor;
+	GLdouble distance;
+	Namse::Vector tempContactPoint;
+	Namse::Triangle* tempTriangle = nullptr;
+
+
+	if (currentHop >= MAX_RAY_HOP)
+		return retColor;
+
+	// reflection
+	Namse::Vector reflectionVector = ray + triangle->m_NormalVector * (ray.DotProduct(-triangle->m_NormalVector)) * 2.f;
+	if (m_Octree.FindNearestTriangle(contactPoint, reflectionVector, MAX_DISTNACE,
+		distance, tempContactPoint, &tempTriangle))
+	{
+		retColor = RayTrace(tempTriangle, tempContactPoint, reflectionVector, currentHop + 1) * tempTriangle->m_ReflectionFactor;
+	}
+
+
+	// transmission
+	// ½º³ÚÀÇ ¹ýÄ¢ ¾È¾¸
+	Namse::Vector transmissionVector = ray;
+	if (m_Octree.FindNearestTriangle(contactPoint, transmissionVector, MAX_DISTNACE,
+		distance, tempContactPoint, &tempTriangle))
+	{
+		retColor = RayTrace(tempTriangle, tempContactPoint, transmissionVector, currentHop + 1) * tempTriangle->m_TransmissionFactor;
+	}
+
+
+	// to light
+
+	for (auto& light : m_LightList)
+	{
+		switch (light->m_LightType)
+		{
+		case SPOT_LIGHT:
+		{
+			Namse::Vector toLightRay = (light->m_Position - contactPoint).Unit();
+			auto dot = toLightRay.DotProduct(triangle->m_NormalVector);
+
+			if (dot <= 0)
+				break;
+
+			Namse::Triangle* shadowMaker;
+			GLdouble shadowMakerDistance;
+			Namse::Vector shadowPoint;
+
+			if (m_Octree.FindNearestTriangle(contactPoint, (light->m_Position - contactPoint).Unit()
+				, (light->m_Position - contactPoint).Norm() + MIN_DISTNACE, shadowMakerDistance, shadowPoint, &shadowMaker))
+			{
+				retColor += RayTrace(shadowMaker, shadowPoint, (light->m_Position - contactPoint).Unit(),
+					currentHop + 1) * shadowMaker->m_TransmissionFactor;
+			}
+			else
+			{
+				auto lightDistance = (contactPoint - light->m_Position).Norm();
+				if (lightDistance != 0)
+					retColor += light->m_Color * (dot)* light->m_LightPower / (lightDistance);
+			}
+		}break;
+		case DIRECTIONAL_LIGHT:
+		{
+			Namse::Triangle* shadowMaker;
+			GLdouble shadowMakerDistance;
+			Namse::Vector shadowPoint;
+
+			Namse::Vector lightRay = -((Namse::DirectionalLight*)(light))->m_Ray;
+			auto dot = lightRay.DotProduct(triangle->m_NormalVector);
+			if (dot <= 0)
+				break;
+
+			if (m_Octree.FindNearestTriangle(contactPoint, -((Namse::DirectionalLight*)(light))->m_Ray
+				, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
+			{
+				retColor += RayTrace(shadowMaker, shadowPoint, (light->m_Position - contactPoint).Unit(),
+					currentHop + 1) * shadowMaker->m_TransmissionFactor;
+			}
+			else
+			{
+				retColor += light->m_Color * dot * light->m_LightPower;
+			}
+		}break;
+		}
+	}
+
+
+
+	return retColor;
+
+}
+
+Namse::Color Namse::RayTracingEngine::RayTrace(Namse::Vector& from, Namse::Vector& ray)
 {
 	Color retColor;
 	GLdouble distance;
 	Namse::Vector contactPoint;
 	Namse::Triangle* triangle = nullptr;
-	
+
 	if (m_Octree.FindNearestTriangle(from, ray, MAX_DISTNACE,
 		distance, contactPoint, &triangle))
 	{
+		retColor = RayTrace(triangle, contactPoint, ray, 1);
+	}
+	return retColor;
+
+	/*		if (currentHop < MAX_RAY_HOP)
+		{
+		// reflection
+		Namse::Vector reflectionVector = ray + triangle->m_NormalVector * (ray.DotProduct(-triangle->m_NormalVector)) * 2.f;
+		retColor += RayTrace(contactPoint, reflectionVector.Unit(), currentHop + 1, triangle) * triangle->m_ReflectionFactor;
+
+		// transmission
+		// ½º³ÚÀÇ ¹ýÄ¢ ¾È¾¸
+		Namse::Vector transmissionVector = ray;
+		retColor += RayTrace(contactPoint, transmissionVector.Unit(), currentHop + 1, triangle) * triangle->m_TransmissionFactor;
+		}
+		}
+
+		if (prevTriangle != nullptr)
+		{
 		// light
 		for (auto& light : m_LightList)
 		{
-			switch (light->m_LightType)
-			{
-			case SPOT_LIGHT:
-			{
-				Namse::Triangle* shadowMaker;
-				GLdouble shadowMakerDistance;
-				Namse::Vector shadowPoint;
+		switch (light->m_LightType)
+		{
+		case SPOT_LIGHT:
+		{
+		Namse::Vector toLightRay = (light->m_Position - contactPoint).Unit();
+		auto dot = toLightRay.DotProduct(prevTriangle->m_NormalVector);
 
-				if (m_Octree.FindNearestTriangle(triangle->m_Position, light->m_Position - triangle->m_Position
-					, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
-				{
-					if (currentHop < MAX_RAY_HOP)
-					{
-						retColor += RayTrace(shadowPoint,
-							light->m_Position - triangle->m_Position,
-							currentHop + 1) * shadowMaker->m_TransmissionFactor;
-					}
-				}
-				else
-				{
-					Namse::Vector lightRay = (contactPoint - light->m_Position).Unit();
-					auto dot = lightRay.DotProduct(triangle->m_NormalVector);
-					//retColor += light->m_Color * dot * light->m_LightPower / (distance * distance);
-					if (dot > 0)
-						retColor += light->m_Color * dot * light->m_LightPower / (distance);
-				}
-			}break;
-			case DIRECTIONAL_LIGHT:
-			{
-				Namse::Triangle* shadowMaker;
-				GLdouble shadowMakerDistance;
-				Namse::Vector shadowPoint;
+		if (dot <= 0)
+		break;
 
-				if (m_Octree.FindNearestTriangle(triangle->m_Position, light->m_Position - triangle->m_Position
-					, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
-				{
-					if (currentHop < MAX_RAY_HOP)
-					{
-						retColor += RayTrace(shadowPoint,
-							light->m_Position - triangle->m_Position,
-							currentHop + 1) * shadowMaker->m_TransmissionFactor;
-					}
-				}
-				else
-				{
-					Namse::Vector lightRay = -((Namse::DirectionalLight*)(light))->m_Ray;
-					auto dot = lightRay.DotProduct(triangle->m_NormalVector);
-					if (dot > 0)
-						retColor += light->m_Color * dot * light->m_LightPower;
-				}
-			}break;
-			}
-			
-		}
-		
+		Namse::Triangle* shadowMaker;
+		GLdouble shadowMakerDistance;
+		Namse::Vector shadowPoint;
+
+		if (m_Octree.FindNearestTriangle(contactPoint, (light->m_Position - contactPoint).Unit()
+		, (light->m_Position - contactPoint).Norm() + MIN_DISTNACE, shadowMakerDistance, shadowPoint, &shadowMaker))
+		{
 		if (currentHop < MAX_RAY_HOP)
 		{
-			// reflection
-			Namse::Vector reflectionVector = ray + triangle->m_NormalVector * (ray.DotProduct(-triangle->m_NormalVector)) * 2.f;
-			retColor += RayTrace(contactPoint, ray, currentHop + 1) * triangle->m_ReflectionFactor;
-
-			// transmission
-			// ½º³ÚÀÇ ¹ýÄ¢ ¾È¾¸
-			Namse::Vector transmissionVector = ray;
-			retColor += RayTrace(contactPoint, ray, currentHop + 1) * triangle->m_TransmissionFactor;
+		retColor += RayTrace(contactPoint,
+		(light->m_Position - contactPoint).Unit(),
+		currentHop + 1, prevTriangle); //* prevTriangle->m_TransmissionFactor;
 		}
-	}
-	else{
-		int a = 5;
-	}
-	return retColor;
+		}
+		else
+		{
+		auto lightDistance = (contactPoint - light->m_Position).Norm();
+		if (lightDistance != 0)
+		retColor += light->m_Color * (dot)* light->m_LightPower / (lightDistance);
+		}
+		}break;
+		case DIRECTIONAL_LIGHT:
+		{
+		Namse::Triangle* shadowMaker;
+		GLdouble shadowMakerDistance;
+		Namse::Vector shadowPoint;
+
+		if (m_Octree.FindNearestTriangle(contactPoint, -((Namse::DirectionalLight*)(light))->m_Ray
+		, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
+		{
+		if (currentHop < MAX_RAY_HOP)
+		{
+		retColor += RayTrace(shadowPoint,
+		light->m_Position - contactPoint,
+		currentHop + 1, prevTriangle) * shadowMaker->m_TransmissionFactor;
+		}
+		}
+		else
+		{
+		Namse::Vector lightRay = -((Namse::DirectionalLight*)(light))->m_Ray;
+		auto dot = lightRay.DotProduct(prevTriangle->m_NormalVector);
+		if (dot > 0)
+		retColor += light->m_Color * dot * light->m_LightPower;
+		}
+		}break;
+		}
+
+		}
+		}
+		return retColor;
+		*/
 }
 
 void Namse::RayTracingEngine::ThreadSetup()
