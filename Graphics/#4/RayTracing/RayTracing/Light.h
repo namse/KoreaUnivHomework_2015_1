@@ -30,5 +30,16 @@ namespace Namse
 			:Light(SPOT_LIGHT) {}
 		~SpotLight() {}
 	};
+
+	class DirectionalLight
+		: public Light
+	{
+	public:
+		DirectionalLight()
+			:Light(DIRECTIONAL_LIGHT){}
+		~DirectionalLight() {}
+
+		Namse::Vector m_Ray;
+	};
 }
 

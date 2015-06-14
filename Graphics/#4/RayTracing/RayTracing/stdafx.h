@@ -16,6 +16,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <algorithm>
+#include <ctype.h>
 
 extern GLdouble g_ScreenLength;
 #define IN

@@ -181,10 +181,16 @@ int main(int argc, char* argv[])
 
 	g_RayTracingEngine->ThreadSetup();
 
+	Namse::DirectionalLight directionalLight;
+	directionalLight.m_Color = Namse::Color(0, 0, 1);
+	directionalLight.m_LightPower = 1;
+	directionalLight.m_Ray = Namse::Vector(-1, -1, -1).Unit();
+	g_RayTracingEngine->AddLight(&directionalLight);
+
 	Namse::SpotLight light;
-	light.m_Position = Namse::Vector(5, 0, 0);
-	light.m_Color = Namse::Color(1, 0, 0);
-	light.m_LightPower = 100;
+	light.m_Position = Namse::Vector(1, 1, -1);
+	light.m_Color = Namse::Color(1, 0.5f, 0.5f);
+	light.m_LightPower = 1;
 	g_RayTracingEngine->AddLight(&light);
 
 	Namse::Vector Vertex[8]{

@@ -2,7 +2,8 @@
 #include "Node.h"
 #include "GLMath.h"
 namespace Namse
-{
+{ 
+	// Camera Base is from http://www.3dcpptutorials.sk/index.php?id=51
 	class Camera :
 		public Node
 	{

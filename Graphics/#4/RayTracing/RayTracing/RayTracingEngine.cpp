@@ -122,24 +122,59 @@ Namse::Color Namse::RayTracingEngine::RayTrace(Namse::Vector& from, Namse::Vecto
 		// light
 		for (auto& light : m_LightList)
 		{
-			Namse::Triangle* shadowMaker;
-			GLdouble shadowMakerDistance;
-			Namse::Vector shadowPoint;
-			
-			if (m_Octree.FindNearestTriangle(triangle->m_Position, light->m_Position - triangle->m_Position
-				, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
+			switch (light->m_LightType)
 			{
-				if (currentHop < MAX_RAY_HOP)
+			case SPOT_LIGHT:
+			{
+				Namse::Triangle* shadowMaker;
+				GLdouble shadowMakerDistance;
+				Namse::Vector shadowPoint;
+
+				if (m_Octree.FindNearestTriangle(triangle->m_Position, light->m_Position - triangle->m_Position
+					, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
 				{
-					retColor += RayTrace(shadowPoint,
-						light->m_Position - triangle->m_Position,
-						currentHop + 1) * shadowMaker->m_TransmissionFactor;
+					if (currentHop < MAX_RAY_HOP)
+					{
+						retColor += RayTrace(shadowPoint,
+							light->m_Position - triangle->m_Position,
+							currentHop + 1) * shadowMaker->m_TransmissionFactor;
+					}
 				}
-			}
-			else
+				else
+				{
+					Namse::Vector lightRay = (contactPoint - light->m_Position).Unit();
+					auto dot = lightRay.DotProduct(triangle->m_NormalVector);
+					//retColor += light->m_Color * dot * light->m_LightPower / (distance * distance);
+					if (dot > 0)
+						retColor += light->m_Color * dot * light->m_LightPower / (distance);
+				}
+			}break;
+			case DIRECTIONAL_LIGHT:
 			{
-				retColor += light->m_Color * light->m_LightPower / (distance * distance);
+				Namse::Triangle* shadowMaker;
+				GLdouble shadowMakerDistance;
+				Namse::Vector shadowPoint;
+
+				if (m_Octree.FindNearestTriangle(triangle->m_Position, light->m_Position - triangle->m_Position
+					, distance, shadowMakerDistance, shadowPoint, &shadowMaker))
+				{
+					if (currentHop < MAX_RAY_HOP)
+					{
+						retColor += RayTrace(shadowPoint,
+							light->m_Position - triangle->m_Position,
+							currentHop + 1) * shadowMaker->m_TransmissionFactor;
+					}
+				}
+				else
+				{
+					Namse::Vector lightRay = -((Namse::DirectionalLight*)(light))->m_Ray;
+					auto dot = lightRay.DotProduct(triangle->m_NormalVector);
+					if (dot > 0)
+						retColor += light->m_Color * dot * light->m_LightPower;
+				}
+			}break;
 			}
+			
 		}
 		
 		if (currentHop < MAX_RAY_HOP)

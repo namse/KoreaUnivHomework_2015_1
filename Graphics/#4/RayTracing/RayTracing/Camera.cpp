@@ -59,12 +59,12 @@ bool Namse::Camera::OnKeyDown(unsigned int nChar)
 
 	Namse::Vector Movement;
 
-	if (nChar == 'W') Movement += Forward;
-	if (nChar == 'S') Movement -= Forward;
-	if (nChar == 'A') Movement -= Right;
-	if (nChar == 'D') Movement += Right;
-	if (nChar == 'R') Movement += Up;
-	if (nChar == 'F') Movement -= Up;
+	if (toupper(nChar) == 'W') Movement += Forward;
+	if (toupper(nChar) == 'S') Movement -= Forward;
+	if (toupper(nChar) == 'A') Movement -= Right;
+	if (toupper(nChar) == 'D') Movement += Right;
+	if (toupper(nChar) == 'R') Movement += Up;
+	if (toupper(nChar) == 'F') Movement -= Up;
 
 	m_Reference += Movement;
 	m_Position += Movement;
