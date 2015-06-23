@@ -1,0 +1,31 @@
+◎자가 텀프로젝트 체크리스트
+
+	(구현/ 미구현) → (구현) 혹은 (미구현)으로 수정하여 작성
+
+	학번 : 2013210111
+	이름 : 남세현
+
+
+◎Generating ray-traced images (22+α)
+
+	▶Point light source
+		Directional light (+3)			--> 구현 
+		Spot light (+3)				--> 구현
+		Multiple light sources (+3)		--> 구현
+
+	▶Sphere rendering: two spheres at least
+		More than two objects (+3)		--> 구현
+
+	▶Interactive control
+		Viewpoint (+2)				--> 구현
+		Screen resolution (+2)			--> 구현
+		# of bounces in tracing a ray (+2)	--> 구현
+
+	▶Reflection rays bouncing two times at least
+		Refraction rays (+5)			--> 구현
+
+	▶Polygonal object (+5)				--> 구현
+
+	▶Acceleration techniques: octree (+10)		--> 구현
+
+추가구현 : 멀티쓰레드를 이용한 레이트레이싱, 멀티샘플링

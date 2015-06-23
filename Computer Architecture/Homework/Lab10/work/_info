@@ -1,0 +1,504 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Modeltech_pe_edu_10.4/examples
+vacu
+Z0 !s110 1433982374
+!i10b 1
+!s100 eS3;kaPW5[bbjK5@gHS880
+Iz]LWJdR9CPdIlG?W]SB2J3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10
+Z3 w1433977893
+Z4 8control_units.v
+Z5 Fcontrol_units.v
+L0 94
+Z6 OP;L;10.4;61
+r1
+!s85 0
+31
+Z7 !s108 1433982374.092000
+Z8 !s107 mux2to1_beh.v|alu_beh.v|control_units.v|components.v|regfile_beh.v|mem_beh.v|C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab10\kustar.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab10\kustar.v|
+!s101 -O0
+!i113 1
+Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+vAdder
+R0
+!i10b 1
+!s100 C5bBUD5DQf?:ZK1bS:fLN3
+I@a>^]RkLi0e63<_^:6e[;2
+R1
+R2
+Z11 w1433970941
+Z12 8components.v
+Z13 Fcomponents.v
+L0 200
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@adder
+vALU
+R0
+!i10b 1
+!s100 1eSIlVX7:=agZC8jN@QnH2
+I99<IWBnHMV6^DY<[^Nc=62
+R1
+R2
+Z14 w1433953079
+Z15 8alu_beh.v
+Z16 Falu_beh.v
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@a@l@u
+vALUTestbench
+R0
+!i10b 1
+!s100 3beWc_B9=HX7_4^WzVJbj0
+IU9joR[2@Ef7]z8Sb1IWX:2
+R1
+R2
+R14
+R15
+R16
+L0 37
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@a@l@u@testbench
+vconcatenate4to28
+R0
+!i10b 1
+!s100 lM]j:fRJ;W^jI936WDAC]3
+IK9Y6>60kk?z<S]2cZU7fF2
+R1
+R2
+R11
+R12
+R13
+L0 165
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vconcatenate4to28_Testbench
+R0
+!i10b 1
+!s100 0;YNfLh@MP_gWEKbnOdaN3
+IhR57A2^f3S]BKbIOfojD81
+R1
+R2
+R11
+R12
+R13
+L0 177
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+nconcatenate4to28_@testbench
+vkustar
+R0
+!i10b 1
+!s100 A[W_?QW1_fF==TXQO6XVO0
+I=DKz<BeE4Bz78g^lJNPSb3
+R1
+R2
+w1433982366
+8C:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab10\kustar.v
+FC:\Users\Echo\Documents\KoreaUnivHomework_2015_1\Computer Architecture\Homework\Lab10\kustar.v
+L0 9
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vmcu
+R0
+!i10b 1
+!s100 KR^g]5QcCQHTWZTkXkA`V2
+IZf9K6Hn8]CBn?;=@5XROD0
+R1
+R2
+R3
+R4
+R5
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vmem
+R0
+!i10b 1
+!s100 _f;=25bGjmRPS:S0zXMH`0
+I3g:IYIDbHAS0EV0j0kTW70
+R1
+R2
+Z17 w1305633344
+Z18 8C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mem_beh.v
+Z19 FC:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mem_beh.v
+L0 4
+R6
+r1
+!s85 0
+31
+Z20 !s108 1433982374.260000
+Z21 !s107 C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mem_beh.v|
+Z22 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mem_beh.v|
+!s101 -O0
+!i113 1
+R10
+vMemTestbench
+R0
+!i10b 1
+!s100 >2U8RolZaB_icRa8:2:RC0
+IUa9:M8c?cO]_f4d:RzBG32
+R1
+R2
+R17
+R18
+R19
+L0 43
+R6
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+!i113 1
+R10
+n@mem@testbench
+vmux2to1
+R0
+!i10b 1
+!s100 jkkL_DTS1choXOC4f:jG]0
+IjUhlB;[kOIn:Tl33i^39N3
+R1
+R2
+Z23 w1433962631
+Z24 8C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mux2to1_beh.v
+Z25 FC:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mux2to1_beh.v
+L0 19
+R6
+r1
+!s85 0
+31
+Z26 !s108 1433982374.392000
+Z27 !s107 C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mux2to1_beh.v|
+Z28 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Echo/Documents/KoreaUnivHomework_2015_1/Computer Architecture/Homework/Lab10/mux2to1_beh.v|
+!s101 -O0
+!i113 1
+R10
+vmux2to1for5bit
+R0
+!i10b 1
+!s100 ziP3Vkkbg5in7ZQh;;S9J3
+I=?XobMghc>Qkfi0kfKlP52
+R1
+R2
+R23
+R24
+R25
+L0 2
+R6
+r1
+!s85 0
+31
+R26
+R27
+R28
+!s101 -O0
+!i113 1
+R10
+vmux4to1
+R0
+!i10b 1
+!s100 nZ_O2<n<i_X=`9=N<e_4i2
+I]U3NL[Qefh;^i3``k2^:m0
+R1
+R2
+R11
+R12
+R13
+L0 57
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vmux4to1_Testbench
+R0
+!i10b 1
+!s100 ;=]BNhc6Nd3^Qa6Dm:goM0
+I0ET@@Sj2n_g[_=hO?<VAE2
+R1
+R2
+R11
+R12
+R13
+L0 75
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+nmux4to1_@testbench
+vmuxTestbench
+R0
+!i10b 1
+!s100 ;`7P<mENlRj1gJX;0>YWU3
+Ib7gQE`1Ml=M8_ZJ<SYd;72
+R1
+R2
+R23
+R24
+R25
+L0 35
+R6
+r1
+!s85 0
+31
+R26
+R27
+R28
+!s101 -O0
+!i113 1
+R10
+nmux@testbench
+vRegFileTestbench
+R0
+!i10b 1
+!s100 DEf>UZgjZBC42RH=lW69@1
+Ia5Eco:<bX3o@]m0kc482A1
+R1
+R2
+Z29 w1305621702
+Z30 8regfile_beh.v
+Z31 Fregfile_beh.v
+L0 52
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+n@reg@file@testbench
+vregisterfile
+R0
+!i10b 1
+!s100 lF^L1H8<^^TM_a_z<N:G12
+IG;;eoSZ^gdb[;`PA6@Sc:3
+R1
+R2
+R29
+R30
+R31
+L0 9
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vshiftleft2
+R0
+!i10b 1
+!s100 Kb`Wi5d^9a;Lh?jOlJkQQ1
+Ie@WlROCG6n?K2FTbm1]>k3
+R1
+R2
+R11
+R12
+R13
+L0 129
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vshiftleft2_Testbench
+R0
+!i10b 1
+!s100 [<IMN<^A7:CDzJ8TH5PT:2
+IUl@Kkj:c6aK@8BIaabHS42
+R1
+R2
+R11
+R12
+R13
+L0 140
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+nshiftleft2_@testbench
+vsignextd
+R0
+!i10b 1
+!s100 =OJJ=oi0k^_f18FZz2II20
+I9FK7:GM[Th=362<MfQ=ka3
+R1
+R2
+R11
+R12
+R13
+L0 100
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vsignextd_Testbench
+R0
+!i10b 1
+!s100 ?=73G40GBmSSg:H69Z]E_2
+IG_MJVNL?HCXMNW`fka1HP3
+R1
+R2
+R11
+R12
+R13
+L0 113
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+nsignextd_@testbench
+vsingle_register
+R0
+!i10b 1
+!s100 _ETm6Ze0f^VD_^YiDFMjG3
+I:01^HliO0mW^PjKV0EC2H2
+R1
+R2
+R11
+R12
+R13
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+vsingle_register_Testbench
+R0
+!i10b 1
+!s100 TBiFTVkJ6O=kBLm40c60@0
+IZXS6_kBW7lO<ojEE?QMRh3
+R1
+R2
+R11
+R12
+R13
+L0 20
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+!i113 1
+R10
+nsingle_register_@testbench
